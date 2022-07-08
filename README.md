@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Python-%3E%3D3.7-blue) ![](https://img.shields.io/badge/Nonebot2-2.0.0b4-pink)
+![](https://img.shields.io/badge/Python-%3E%3D3.7-blue) ![](https://img.shields.io/badge/Nonebot2-%3E%3D2.0.0b4-pink)
 # PixivSearcher
 一个用来搜涩图的好东西  
 ## 注：暂不支持R18
