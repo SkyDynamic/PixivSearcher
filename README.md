@@ -2,13 +2,16 @@
 # PixivSearcher
 一个用来搜涩图的好东西  
 
+# 启动
+在文件夹内打开终端输入`nb run`或`python bot.py`
+
 # 如何使用
 先修改`/src/plugins/pixiv/account.json`文件  
-`{
-  "username": "你的pixivic用户名",
-  "password": "你的pixivic用户密码"
-}`
-如果没有账号请先去pixivic.com去注册
+`{  
+  "username": "你的pixivic用户名",  
+  "password": "你的pixivic用户密码"  
+}`  
+如果没有账号请先去pixivic.com去注册  
 
 # 指令：
 ## 私聊
