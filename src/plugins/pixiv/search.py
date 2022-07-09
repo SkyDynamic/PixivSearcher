@@ -22,9 +22,9 @@ class Main():
 
     def search(self, key):
         if self.token != None:
-            if self.R18 == False:
+            if self.R18 == 'False':
                 self.url = f'https://pix.ipv4.host/illustrations?keyword={key}&page=1&pageSize=16&searchType=original&illustType=illust&minWidth=1280&minHeight=720&xRestrict=0'
-            elif self.R18 == True:
+            elif self.R18 == 'True':
                 self.url = f'https://pix.ipv4.host/illustrations?keyword={key}&page=1&pageSize=16&searchType=original&illustType=illust&minWidth=1280&minHeight=720&xRestrict=1'
             headers = get_simple_header()
             headers['authorization'] = self.token
