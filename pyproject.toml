@@ -2,7 +2,7 @@
 name = "PixivSearcher"
 version = "1.3.0"
 description = "PixivSearcher"
-authors = [Sky_Dynamic]
+authors = ["Sky_Dynamic"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
