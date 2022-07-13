@@ -7,8 +7,7 @@ import random
 from .pixiv_site.get_header import *
 
 class Main():
-    def __new__(self, key, R18):
-        self.R18 = R18
+    def __new__(self, key):
         self.get_token(self)
         self.search(self, key)
         return self.data_json
@@ -22,10 +21,7 @@ class Main():
 
     def search(self, key):
         if self.token != None:
-            if self.R18 == 'False':
-                self.url = f'https://pix.ipv4.host/illustrations?keyword={key}&page=1&pageSize=16&searchType=original&illustType=illust&minWidth=1280&minHeight=720&xRestrict=0'
-            elif self.R18 == 'True':
-                self.url = f'https://pix.ipv4.host/illustrations?keyword={key}&page=1&pageSize=16&searchType=original&illustType=illust&minWidth=1280&minHeight=720&xRestrict=1'
+            self.url = f'https://pix.ipv4.host/illustrations?keyword={key}&page=1&pageSize=16&searchType=original&illustType=illust&minWidth=1280&minHeight=720&xRestrict=0'
             headers = get_simple_header()
             headers['authorization'] = self.token
             res_json = requests.get(self.url, headers=headers).json()
@@ -45,4 +41,10 @@ class Rank():
         if rank == 'month':
             url = f'https://pix.ipv4.host/ranks?page={pagenum}&pageSize=15&date={yesterday}&mode=month'
         res_json = requests.get(url, headers=headers).json()
+        return res_json.get("data")
+
+class R18():
+    def __new__(self, tag):
+        url = f'https://api.lolicon.app/setu/v2?num=20&tag={tag}&r18=1'
+        res_json = requests.get(url).json()
         return res_json.get("data")
