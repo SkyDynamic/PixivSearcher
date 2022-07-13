@@ -67,6 +67,8 @@ async def _(event: MessageEvent, arg: Message = CommandArg()):
                 await start.send(___msg)
         if len(arg1) == 2:
             if arg1[0] == 'R':
+                tag = arg1[1]
+                await start.send(f'正在搜索：{tag}')
                 data_json = search.R18(tag)
                 if data_json != None and data_json != 'Not Token':
                     await __(data_json, 'True')
