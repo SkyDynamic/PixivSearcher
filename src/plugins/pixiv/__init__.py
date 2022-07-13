@@ -56,7 +56,7 @@ async def _(event: MessageEvent, arg: Message = CommandArg()):
     else:
         if len(arg1) == 1:
             await start.send(f'正在搜索：{tag}')
-            data_json = search.Main(tag, 'False')
+            data_json = search.Main(tag)
             if data_json != None and data_json != 'Not Token':
                 await __(data_json, 'False')
             elif data_json == None:
@@ -67,15 +67,12 @@ async def _(event: MessageEvent, arg: Message = CommandArg()):
                 await start.send(___msg)
         if len(arg1) == 2:
             if arg1[0] == 'R':
-                data_json = search.Main(tag, 'True')
+                data_json = search.R18(tag)
                 if data_json != None and data_json != 'Not Token':
                     await __(data_json, 'True')
                 elif data_json == None:
                     __msg = '什么也没找到呢~'
                     await start.send(__msg)
-                elif data_json == 'Not Token':
-                    ___msg = '未设置Token，请私聊机器人并修改account.json进行登录哦~'
-                    await start.send(___msg)
 
 @rank.handle()
 async def rank_(event: MessageEvent, arg: Message = CommandArg()):
@@ -120,27 +117,37 @@ async def send_img(msg):
 
 def DownLoadImg(data_json, num, R18):
     try:
-        id = data_json[num]['id']
-        title = data_json[num]['title']
-        author = data_json[num]['artistPreView']['account']
-        url = f'https://pixiv.re/{id}.png'
-        imgmsg = Message(f'ID：{id}\n标题：{title}\n作者：{author}\n')
         if R18 == 'False':
+            id = data_json[num]['id']
+            title = data_json[num]['title']
+            author = data_json[num]['artistPreView']['account']
+            url = f'https://px2.rainchan.win/img/original/{id}'
+            imgmsg = Message(f'ID：{id}\n标题：{title}\n作者：{author}\n')
             img = MessageSegment.image(url)
         if R18 == 'True':
+            id = data_json[num]['pid']
+            title = data_json[num]['title']
+            author = data_json[num]['author']
+            url = f'https://px2.rainchan.win/img/original/{id}'
+            imgmsg = Message(f'ID：{id}\n标题：{title}\n作者：{author}\n')
             img = url + '\n这个图是R18哦~自行下载来观赏哦，机器人就不发出来了，上面是链接'
         msg = imgmsg + img
         return msg
     except IndexError as e:
         num = num - 10
-        id = data_json[num]['id']
-        title = data_json[num]['title']
-        author = data_json[num]['artistPreView']['account']
-        url = f'https://pixiv.re/{id}.png'
-        imgmsg = Message(f'ID：{id}\n标题：{title}\n作者：{author}\n')
         if R18 == 'False':
+            id = data_json[num]['id']
+            title = data_json[num]['title']
+            author = data_json[num]['artistPreView']['account']
+            url = f'https://px2.rainchan.win/img/original/{id}'
+            imgmsg = Message(f'ID：{id}\n标题：{title}\n作者：{author}\n')
             img = MessageSegment.image(url)
         if R18 == 'True':
+            id = data_json[num]['pid']
+            title = data_json[num]['title']
+            author = data_json[num]['author']
+            url = f'https://px2.rainchan.win/img/original/{id}'
+            imgmsg = Message(f'ID：{id}\n标题：{title}\n作者：{author}\n')
             img = url + '\n这个图是R18哦~自行下载来观赏哦，机器人就不发出来了，上面是链接'
         msg = imgmsg + img
         return msg
